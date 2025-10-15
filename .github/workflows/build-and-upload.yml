@@ -57,11 +57,9 @@ jobs:
         run: |
           shopt -s nullglob
           EXIT_CODE=0
-          pixi auth login prefix.dev --token ${{ secrets.PREFIX_API_KEY }}
           for pkg in $(find output -type f \( -name "*.conda" -o -name "*.tar.bz2" \) ); do
-            if ! pixi upload https://prefix.dev/api/v1/upload/utiasasrl "${pkg}"; then
+            if ! pixi run rattler-build upload prefix -c utiasasrl "${pkg}"; then
               EXIT_CODE=1
             fi
           done
-          pixi auth logout prefix.dev
           exit $EXIT_CODE
