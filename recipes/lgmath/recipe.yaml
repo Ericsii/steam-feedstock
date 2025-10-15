@@ -1,0 +1,54 @@
+context:
+  version: "2.1.0"
+
+package:
+  name: lgmath
+  version: ${{ version }}
+
+source:
+  git: https://github.com/utiasASRL/lgmath.git
+  tag: v${{ version }}
+
+build:
+  number: 0
+  script: |
+    extra_cmake_args=(
+        -GNinja
+        -DCMAKE_INSTALL_LIBDIR=lib
+        -DBUILD_TESTS=OFF
+    )
+    mkdir build && cd build
+    cmake ${CMAKE_ARGS} "${extra_cmake_args[@]}" \
+        -DCMAKE_PREFIX_PATH=$PREFIX \
+        -DCMAKE_INSTALL_PREFIX=$PREFIX \
+        $SRC_DIR
+    ninja
+    ninja install
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - cmake
+    - ninja
+  host:
+    - eigen >=3.3.7,<4
+  run:
+    - eigen >=3.3.7,<4
+
+tests:
+  - package_contents:
+      include:
+        - lgmath.hpp
+      files:
+        exists:
+          - lib/cmake/lgmath/lgmathConfig.cmake
+          - lib/cmake/lgmath/lgmathConfigVersion.cmake
+
+about:
+  homepage: https://github.com/utiasASRL/lgmath
+  license: BSD-3-Clause
+  license_file: LICENSE
+  summary: Lie group math library.
+  description: lgmath is a C++ library for handling geometry in state estimation problems in robotics. It is used to store, manipulate, and apply three-dimensional rotations and transformations and their associated uncertainties.
+  documentation: https://github.com/utiasASRL/lgmath
+  repository: https://github.com/utiasASRL/lgmath

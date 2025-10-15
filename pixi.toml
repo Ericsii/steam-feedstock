@@ -1,0 +1,10 @@
+[workspace]
+channels = ["conda-forge"]
+name = "steam-feedstock"
+platforms = ["linux-aarch64"]
+version = "0.1.0"
+
+[tasks]
+
+[dependencies]
+rattler-build = ">=0.48.1,<0.49"
