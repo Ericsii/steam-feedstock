@@ -45,6 +45,8 @@ jobs:
 
       - name: Upload all packages
         shell: bash
+        env:
+          PREFIX_API_KEY: ${{ secrets.PREFIX_API_KEY }}
         # do not upload on PR
         if: github.event_name == 'push'
         run: |
