@@ -3,7 +3,7 @@
 extra_cmake_args=(
     -GNinja
     -DCMAKE_INSTALL_LIBDIR=lib
-    -DBUILD_TESTS=OFF
+    -DBUILD_TESTING=OFF
 )
 
 mkdir build && cd build
