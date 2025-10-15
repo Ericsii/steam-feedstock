@@ -32,7 +32,7 @@ jobs:
           pixi-version: v0.56.0
           cache: true
 
-      - name: Run code in changed subdirectories
+      - name: Build packages for ${{ matrix.target }}
         shell: bash
         env:
           TARGET_PLATFORM: ${{ matrix.target }}
