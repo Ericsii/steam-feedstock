@@ -1,0 +1,19 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index ea519c1..6e2127f 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -20,7 +20,13 @@ FetchContent_Declare(
+ )
+ FetchContent_MakeAvailable(googletest)
+ 
+-add_compile_options(-march=native -O3 -Wall -pedantic -Wno-unused-function)
++
++if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
++    add_compile_options(-march=armv8-a)
++else()
++    add_compile_options(-march=native)
++endif()
++add_compile_options(-O3 -Wall -pedantic -Wno-unused-function)
+ 
+ # define number of threads to be used by OpenMP in steam
+ add_definitions(-DSTEAM_DEFAULT_NUM_OPENMP_THREADS=4)

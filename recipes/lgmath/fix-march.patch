@@ -1,0 +1,17 @@
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 498a650..1453932 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -6,7 +6,11 @@ find_package(ament_cmake QUIET)
+ # Compiler setup
+ set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+-add_compile_options(-march=native -O3 -Wall -pedantic)
++if(CMAKE_SYSTEM_PROCESSOR MATCHES "aarch64")
++    add_compile_options(-march=armv8-a -O3 -Wall -pedantic)
++else()
++    add_compile_options(-march=native -O3 -Wall -pedantic)
++endif()
+ 
+ ## cmake flow (default)
+ if ((NOT ament_cmake_FOUND) OR (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT))

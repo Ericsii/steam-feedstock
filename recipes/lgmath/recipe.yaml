@@ -8,6 +8,8 @@ package:
 source:
   git: https://github.com/utiasASRL/lgmath.git
   rev: c1710ef97a81f895b429583ee93c3f8d66ab02dc
+  patches:
+    - fix-march.patch
 
 build:
   number: 0

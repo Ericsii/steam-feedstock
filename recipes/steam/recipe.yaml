@@ -8,7 +8,8 @@ package:
 source:
   git: https://github.com/utiasASRL/steam.git
   rev: d7b7b550a24c2169d9df8b1b356836902ceb7886
-
+  patches:
+    - fix-march.patch
 
 build:
   number: 0
@@ -27,7 +28,6 @@ requirements:
     - eigen >=3.3.7,<4
     - lgmath
     - boost
-    - yaml-cpp
 
 tests:
   - package_contents:
