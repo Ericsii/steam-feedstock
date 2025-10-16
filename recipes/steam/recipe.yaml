@@ -22,12 +22,12 @@ requirements:
   host:
     - eigen >=3.3.7,<4
     - lgmath
-    - boost
+    - libboost-devel
     - yaml-cpp
   run:
     - eigen >=3.3.7,<4
     - lgmath
-    - boost
+    - libboost-devel
 
 tests:
   - package_contents:
