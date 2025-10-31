@@ -9,6 +9,7 @@ source:
   git: https://github.com/utiasASRL/lgmath.git
   rev: c55431ef62d5a706f8ed0c0d81ffa8d7483e1272
   patches:
+    - fix-version.patch
     - fix-march.patch
 
 build:
