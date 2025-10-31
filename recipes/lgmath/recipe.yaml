@@ -1,5 +1,5 @@
 context:
-  version: "2.1.0"
+  version: "3.0.0"
 
 package:
   name: lgmath
@@ -7,12 +7,12 @@ package:
 
 source:
   git: https://github.com/utiasASRL/lgmath.git
-  rev: c1710ef97a81f895b429583ee93c3f8d66ab02dc
+  rev: c55431ef62d5a706f8ed0c0d81ffa8d7483e1272
   patches:
     - fix-march.patch
 
 build:
-  number: 1
+  number: 0
 
 requirements:
   build:
